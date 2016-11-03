@@ -13,9 +13,11 @@
           <td> Nombre de place </td>
           <td> <input type="text" value='<?php if(isset($control)) echo $control->getPlace() ?>' name="place"/> </td>
         </tr>
+      </table>
+      <table>
         <tr>
-          <td> <input type="submit" value="Continuer" name="Continuer"> </td>
-          <td> <input type="submit" value="Annuler" name="Annuler"/> </td>
+          <td> <input type="submit" value="continuer" name="continuer"> </td>
+          <td> <input type="submit" value="annuler" name="annuler"/> </td>
         </tr>
       </table>
       <form>
