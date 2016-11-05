@@ -1,6 +1,6 @@
 <html>
   <head>
-    <Title> Reservation -- Page 1 </Title>
+    <Title> Réservation </Title>
   </head>
     <body>
       <form method="POST" action="Controller.php">

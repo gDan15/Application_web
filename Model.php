@@ -4,10 +4,12 @@ class Model{
   private $destination;
   private $array=array();
   private $state;
-  public function __construct($destination='',$place='',$state=False){
+  private $page;
+  public function __construct($destination='',$place='',$state=False,$page=''){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
+    $this->page=$page;
   }
   public function getPlace(){
     return $this->place;
@@ -30,15 +32,14 @@ class Model{
   public function setArray($array){
     $this->array=$array;
   }
-  // public function getNomArray(){
-  //   return $this->Nom;
-  // }
-  // public function setAgeArray($age){
-  //   $this->Age=$age;
-  // }
-  // public function getAgeArray(){
-  //   return $this->Age;
-  // }
+  //Permet de mémoriser à quel page on est
+  public function setPage($page){
+    $this->page=$page;
+  }
+  //Permet de récuper la page enregistrée
+  public function currentPage(){
+    return $this->page;
+  }
   public function setState($state){
     $this->state=$state;
   }
