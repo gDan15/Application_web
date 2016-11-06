@@ -1,6 +1,7 @@
 <html>
   <head>
     <title> Reservation -- Validation </title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
   </head>
   <body>
   <form method="POST" action="Controller.php">
@@ -8,8 +9,10 @@
       // $control->displayArray();
       $liste=$control->getArray();
       //la liste contient tous les noms et ages
+      echo "<table class=\"table1\" style=\"width:25%\">";
       for($i=0;$i<count($liste);$i++){
-        echo '<table>';
+        //on affiche une seule fois la destination et le nombre de place dans le tableau récapitulatif
+        if($control->getArray()!=[]){
           if($i==0){
             echo '<tr>';
               echo '<td>Destination : </td>';
@@ -29,8 +32,9 @@
             echo '<td>Age : </td>';
             echo '<td>'.$liste[$i].'</td>';
           echo '</tr>';
-        echo '</table>';
+        }
       }
+    echo '</table>';
     ?>
     <table>
       <tr>

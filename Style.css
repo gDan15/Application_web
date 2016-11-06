@@ -1,0 +1,10 @@
+body {
+    background-color: linen;
+}
+
+table.table1{
+  border:1px solid black;
+}
+table.table2{
+  border:3px solid black;
+}
