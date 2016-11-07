@@ -51,7 +51,8 @@ elseif(!empty($_POST['annuler'])){
 }
 else
 {
-  echo 'Il y a un problème.';
+  $control->setErrorText(True);
+  include $control->currentPage();
 }
 //Si control n'est pas vide on l'enregistre dans une variable de session.
 if (isset($control) && $control->state()!=True)

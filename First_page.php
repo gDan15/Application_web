@@ -11,6 +11,17 @@
 				<td> <input type="text" value='<?php if(isset($control)) echo $control->getDestination()?>' name="destination"/> </td>
 			</tr>
       <tr>
+        <td>
+        <?php
+          if(isset($control)){
+            if($control->getErrorText()){
+              echo "Veuillez entrer quelque chose de valide";
+            }
+          }
+        ?>
+      </td>
+      </tr>
+      <tr>
         <td> Nombre de place </td>
         <td> <input type="text" value='<?php if(isset($control)) echo $control->getPlace() ?>' name="place"/> </td>
       </tr>

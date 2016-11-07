@@ -7,14 +7,15 @@ class Model{
   private $state_set;
   private $state_place;
   private $page;
-  private $error=[];
+  private $error;
 
-  public function __construct($destination='',$place='',$state=False,$page='',$state_place=0){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
     $this->page=$page;
     $this->state_place=$state_place;
+    $this->error=$error;
   }
   public function getPlace(){
     return $this->place;
@@ -68,11 +69,15 @@ class Model{
     elseif($place==0){
       $this->state_place=0;
     }
-    else{
-      if($place>$this->place){
-        $this->state_place=$place-$this->place;
-      }
+    elseif($place>$this->place){
+      $this->state_place=$place-$this->place;
     }
+  }
+  public function setErrorText($error){
+    $this->error=$error;
+  }
+  public function getErrorText(){
+    return $this->error;
   }
   public function displayArray(){
     foreach($this->array as $value){
@@ -81,6 +86,4 @@ class Model{
     }
   }
 }
-
-
 ?>
