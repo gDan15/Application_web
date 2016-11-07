@@ -1,11 +1,14 @@
 <?php
 class Model{
+
   private $place;
   private $destination;
   private $array=array();
   private $state_set;
   private $state_place;
   private $page;
+  private $error=[];
+
   public function __construct($destination='',$place='',$state=False,$page='',$state_place=0){
     $this->place=$place;
     $this->destination=$destination;

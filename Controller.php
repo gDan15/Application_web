@@ -15,10 +15,17 @@ if(!empty($_POST['destination']) && !empty($_POST['place']) && !empty($_POST["co
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
   //En effet dans Second_page on travail uniquement avec le nombre de place et non pas avec la liste.
-  $control->comparePlace($_POST['place']);
-  $control->setPlace($_POST['place']);
-  $control->setPage('Second_page.php');
-  include 'Second_page.php';
+  if (!is_numeric($_POST['place']))
+  {
+    echo "Il faut mettre un nombre !!!!";
+  }
+  else
+  {
+    $control->comparePlace($_POST['place']);
+    $control->setPlace($_POST['place']);
+    $control->setPage('Second_page.php');
+    include 'Second_page.php';
+  }
 }
 elseif(!empty($_POST['page_precedente'])){
   if($control->currentPage()=='Second_page.php'){
@@ -35,7 +42,6 @@ elseif(!empty($_POST['confirmer'])){
   $Liste=$control->getArray();
   $control->setPage('Third_page.php');
   include 'Third_page.php';
-  $control->displayArray();
 }
 elseif(!empty($_POST['annuler'])){
   $control->setDestination('');
