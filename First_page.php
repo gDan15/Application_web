@@ -14,7 +14,7 @@
         <td>
         <?php
           if(isset($control)){
-            if($control->getErrorText()){
+            if($control->getErrorText() && (empty($control->getDestination()) || is_numeric($control->getDestination()))){
               echo "Veuillez entrer quelque chose de valide";
             }
           }
@@ -24,6 +24,17 @@
       <tr>
         <td> Nombre de place </td>
         <td> <input type="text" value='<?php if(isset($control)) echo $control->getPlace() ?>' name="place"/> </td>
+      </tr>
+      <tr>
+        <td>
+        <?php
+          if(isset($control)){
+            if($control->getErrorText() && (empty($control->getPlace()) || !is_numeric($control->getPlace()))){
+              echo "Veuillez entrer quelque chose de valide";
+            }
+          }
+        ?>
+      </td>
       </tr>
     </table>
     <table.ver1>

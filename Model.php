@@ -79,6 +79,17 @@ class Model{
   public function getErrorText(){
     return $this->error;
   }
+  //Si il y a un élément vide dans la liste, cette fonction renvoie True
+  public function emptyElement($array){
+    foreach($array as $element){
+      if($element==""){
+        return True;
+      }
+      else{
+        return False;
+      }
+    }
+  }
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';
