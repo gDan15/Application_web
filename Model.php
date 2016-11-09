@@ -82,7 +82,7 @@ class Model{
   //Si il y a un élément vide dans la liste, cette fonction renvoie True
   public function emptyElement($array){
     foreach($array as $element){
-      if($element==""){
+      if($element==" "){
         return True;
       }
       else{
