@@ -11,8 +11,8 @@ else
   $control = new Model();
 }
 //Aller voir différence entre & et &&
-if(!empty($_POST['destination']) && !empty($_POST['place']) && !empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination'])){
-  $control->setErrorText(False);
+if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && !empty($_POST['destination'])){
+  // $control->setErrorText(False);
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
   //En effet dans Second_page on travail uniquement avec le nombre de place et non pas avec la liste.
@@ -48,6 +48,7 @@ elseif(!empty($_POST['annuler'])){
 else
 {
   $control->setErrorText(True);
+  echo $control->currentPage();
   include $control->currentPage();
 }
 //Si control n'est pas vide on l'enregistre dans une variable de session.

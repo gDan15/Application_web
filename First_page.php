@@ -14,7 +14,7 @@
         <td>
         <?php
           if(isset($control)){
-            if($control->getErrorText() && (empty($control->getDestination()) || is_numeric($control->getDestination()))){
+            if($control->getErrorText() && $control->getDestination()==""){
               echo "Veuillez entrer quelque chose de valide";
             }
           }
@@ -29,7 +29,7 @@
         <td>
         <?php
           if(isset($control)){
-            if($control->getErrorText() && (empty($control->getPlace()) || !is_numeric($control->getPlace()))){
+            if($control->getErrorText() && !is_numeric($control->getPlace())){
               echo "Veuillez entrer quelque chose de valide";
             }
           }
