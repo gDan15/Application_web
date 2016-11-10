@@ -82,13 +82,14 @@ class Model{
   //Si il y a un élément vide dans la liste, cette fonction renvoie True
   public function emptyElement($array){
     foreach($array as $element){
-      if($element==" "){
-        return True;
+      if($element==""){
+        $state=True;
       }
       else{
-        return False;
+        $state=False;
       }
     }
+    return $state;
   }
   public function displayArray(){
     foreach($this->array as $value){

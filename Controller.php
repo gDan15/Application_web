@@ -11,7 +11,7 @@ else
   $control = new Model();
 }
 //Aller voir différence entre & et &&
-if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && !empty($_POST['destination'])){
+if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && $_POST['destination']!="" && $_POST['place']!=""){
   // $control->setErrorText(False);
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
@@ -23,6 +23,7 @@ if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST[
 }
 elseif(!empty($_POST['page_precedente'])){
   if($control->currentPage()=='Second_page.php'){
+    $control->setPage('First_page.php');
     include 'First_page.php';
   }
   elseif($control->currentPage()=='Third_page.php'){
@@ -30,9 +31,15 @@ elseif(!empty($_POST['page_precedente'])){
     include 'Second_page.php';
   }
 }
-elseif(!empty($_POST['confirmer']) && $control->emptyElement($_POST['Info'])){
+elseif(!empty($_POST['confirmer']) && !$control->emptyElement($_POST['Info'])){
   //on enregistre les éléments de la liste nom dans control comme ça on peut l'utiliser dans tout les programmes.
   $control->setArray($_POST['Info']);
+  $i=0;
+  foreach($_POST['Info'] as $value){
+    $i=$i+1;
+    echo $i." : ".$value;
+    echo '<br>';
+  }
   $Liste=$control->getArray();
   $control->setPage('Third_page.php');
   include 'Third_page.php';
@@ -60,7 +67,7 @@ else
   }
   include $control->currentPage();
 }
-//Si control n'est pas vide on l'enregistre dans une variable de session.
+//Si control n'est pas vide et qu'aucun bouton 'annuler' est appuyé, on l'enregistre dans une variable de session.
 if (isset($control) && $control->state()!=True)
 {
   $_SESSION['Variable'] = serialize($control);
