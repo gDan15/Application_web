@@ -19,6 +19,8 @@ if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST[
   $control->comparePlace($_POST['place']);
   $control->setPlace($_POST['place']);
   $control->setPage('Second_page.php');
+  //Lorsqu'on passe à la 2 ème on aimerait bien qu'il n'y ait pas de message d'erreur.
+  $control->setErrorText(False);
   include 'Second_page.php';
 }
 elseif(!empty($_POST['page_precedente'])){
@@ -31,15 +33,16 @@ elseif(!empty($_POST['page_precedente'])){
     include 'Second_page.php';
   }
 }
+//Il faut vérifier que le nombre d'ages correspondent au nombre de nom !!!!!!!!
 elseif(!empty($_POST['confirmer']) && !$control->emptyElement($_POST['Info'])){
   //on enregistre les éléments de la liste nom dans control comme ça on peut l'utiliser dans tout les programmes.
   $control->setArray($_POST['Info']);
   $i=0;
-  foreach($_POST['Info'] as $value){
-    $i=$i+1;
-    echo $i." : ".$value;
-    echo '<br>';
-  }
+  // foreach($_POST['Info'] as $value){
+  //   $i=$i+1;
+  //   echo $i." : ".$value;
+  //   echo '<br>';
+  // }
   $Liste=$control->getArray();
   $control->setPage('Third_page.php');
   include 'Third_page.php';
@@ -55,15 +58,15 @@ elseif(!empty($_POST['annuler'])){
 else
 {
   $control->setErrorText(True);
-  echo $control->currentPage();
   if($control->currentPage()=='First_page.php')
   {
+    echo "Erreur 1ere page -> Page courante : ".$control->currentPage();
     $control->setDestination($_POST['destination']);
     $control->setPlace($_POST['place']);
   }
   elseif($control->currentPage()=='Second_page.php'){
+    echo "Erreur 2eme page -> Page courante : ".$control->currentPage();
     $control->setArray($_POST['Info']);
-    echo $control->emptyElement($_POST['Info']);
   }
   include $control->currentPage();
 }

@@ -18,6 +18,15 @@
           echo $control->getArray()[$i*2];
         }
         echo "></td>";
+        echo "<tr>";
+        echo "<td>";
+        if(isset($control)){
+          if($control->getErrorText() && ($control->getArray()[$i*2]=="" || is_numeric($control->getArray()[$i*2]))){
+            echo "Veuillez entrer quelque chose de valide";
+          }
+        }
+        echo "</td>";
+        echo "</tr>";
         echo "</tr>";
         echo "<tr>";
         echo "<td> Age </td>";
@@ -26,6 +35,15 @@
           echo $control->getArray()[$i*2+1];
         }
         echo "></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>";
+        if(isset($control)){
+          if($control->getErrorText() && ($control->getArray()[$i*2+1]=="" || !is_numeric($control->getArray()[$i*2+1]))){
+            echo "Veuillez entrer quelque chose de valide";
+          }
+        }
+        echo "</td>";
         echo "</tr>";
         echo "</table1>";
       }
