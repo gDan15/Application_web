@@ -11,7 +11,9 @@ else
   $control = new Model();
 }
 //Aller voir différence entre & et &&
-if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && $_POST['destination']!="" && $_POST['place']!=""){
+//Il faut rajouter une case pour cocher
+//Faut faire des conditions pour vérifier si la valeur est plus petite que 0 avec (int) !!!!!!
+if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && $_POST['destination']!="" && $_POST['place']!="" && $_POST['place']!=0){
   // $control->setErrorText(False);
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
@@ -34,7 +36,8 @@ elseif(!empty($_POST['page_precedente'])){
   }
 }
 //Il faut vérifier que le nombre d'ages correspondent au nombre de nom !!!!!!!!
-elseif(!empty($_POST['confirmer']) && !$control->emptyElement($_POST['Info'])){
+//Il faut que l'âge soit compris entre 1 - 100 ans.
+elseif(!empty($_POST['confirmer']) && !$control->analyseArray($_POST['Info'])){
   //on enregistre les éléments de la liste nom dans control comme ça on peut l'utiliser dans tout les programmes.
   $control->setArray($_POST['Info']);
   $i=0;

@@ -39,7 +39,7 @@
         echo "<tr>";
         echo "<td>";
         if(isset($control)){
-          if($control->getErrorText() && ($control->getArray()[$i*2+1]=="" || !is_numeric($control->getArray()[$i*2+1]))){
+          if($control->getErrorText() && ($control->getArray()[$i*2+1]=="" || is_numeric($control->getArray()[$i*2+1])<=0 || is_numeric($control->getArray()[$i*2+1])>=100)){
             echo "Veuillez entrer quelque chose de valide";
           }
         }

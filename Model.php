@@ -32,6 +32,18 @@ class Model{
   public function addArray($element){
     array_push($this->array,$element);
   }
+  //Cette fonction va vérifier si les données entrées dans la liste sont bien une suite de string suivit d'un int. Retourne true si un élément n'est pas bon.
+  public function analyseArray($array){
+    for($i=0;$i<count($array);$i++){
+      // if(gettype($array[$i])!='string' || !is_numeric($array[$i+1]) || $array[$i]=="" || $array[$i+1]=="" || $array[$i+1]=='0'){
+      if(gettype($array[$i])=='string' && (int)($array[$i+1])>0 && (int)($array[$i+1])<100){
+        return false;
+      }
+      //On analyse à chaque fois une 'paire' d'élément dans la liste, ce qui fait qu'il faut incrémenter de 2 à chaque itération
+      $i=$i+1;
+    }
+    return true;
+  }
   public function getArray(){
     if($this->state_place==0){
       return $this->array;
@@ -79,15 +91,15 @@ class Model{
   public function getErrorText(){
     return $this->error;
   }
-  //Si il y a un élément vide dans la liste, cette fonction renvoie True
-  public function emptyElement($array){
-    foreach($array as $element){
-      //Dès qu'il y a un élément vide, on retourne immédiatement 'True' en quittant la boucle.
-      if($element==""){
-        return True;
-      }
-    }
-  }
+  // //Si il y a un élément vide dans la liste, cette fonction renvoie True
+  // public function emptyElement($array){
+  //   foreach($array as $element){
+  //     //Dès qu'il y a un élément vide, on retourne immédiatement 'True' en quittant la boucle.
+  //     if($element==""){
+  //       return True;
+  //     }
+  //   }
+  // }
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';
