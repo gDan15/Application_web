@@ -29,7 +29,7 @@
         <td>
         <?php
           if(isset($control)){
-            if($control->getErrorText() && ($control->getPlace()=="" || !is_numeric($control->getPlace()))){
+            if($control->getErrorText() && ($control->getPlace()=="" || (int)($control->getPlace())<=0 || (int)($control->getPlace())>=100)){
               echo "Veuillez entrer quelque chose de valide";
             }
           }

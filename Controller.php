@@ -12,8 +12,8 @@ else
 }
 //Aller voir différence entre & et &&
 //Il faut rajouter une case pour cocher
-//Faut faire des conditions pour vérifier si la valeur est plus petite que 0 avec (int) !!!!!!
-if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST['place']) && !is_numeric($_POST['destination']) && $_POST['destination']!="" && $_POST['place']!="" && $_POST['place']!='0'){
+//Faut faire des conditions pour vérifier si la valeur est plus petite que 0 avec (int) !!!!!! -- fait
+if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && !$control->analyseArray([$_POST['destination'],$_POST['place']])){
   // $control->setErrorText(False);
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
@@ -27,6 +27,7 @@ if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && is_numeric($_POST[
 }
 elseif(!empty($_POST['page_precedente'])){
   if($control->currentPage()=='Second_page.php'){
+    $control->setArray($_POST['Info']);
     $control->setPage('First_page.php');
     include 'First_page.php';
   }

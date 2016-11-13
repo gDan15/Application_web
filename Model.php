@@ -35,14 +35,15 @@ class Model{
   //Cette fonction va vérifier si les données entrées dans la liste sont bien une suite de string suivit d'un int. Retourne true si un élément n'est pas bon.
   public function analyseArray($array){
     for($i=0;$i<count($array);$i++){
-      // if(gettype($array[$i])!='string' || !is_numeric($array[$i+1]) || $array[$i]=="" || $array[$i+1]=="" || $array[$i+1]=='0'){
-      if(gettype($array[$i])=='string' && (int)($array[$i+1])>0 && (int)($array[$i+1])<100){
-        return false;
+      // if(gettype($array[$i])!='string' || !is_numeric($array[$i+1]) || $array[$i]=="" || $array[$i+1]=="" || $array[$i+1]=='0')
+      if(is_numeric($array[$i]) || $array[$i]=="" || (int)($array[$i+1])<=0 || (int)($array[$i+1])>=100){
+      //if(!is_numeric($array[$i]) && $array[$i]!="" && (int)($array[$i+1])>0 && (int)($array[$i+1])<100)
+        return True;
       }
       //On analyse à chaque fois une 'paire' d'élément dans la liste, ce qui fait qu'il faut incrémenter de 2 à chaque itération
       $i=$i+1;
     }
-    return true;
+    return False;
   }
   public function getArray(){
     if($this->state_place==0){
