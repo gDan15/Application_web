@@ -5,11 +5,11 @@
   </head>
   <body>
   <form method="POST" action="Controller.php">
+    <table class="table1" style="width:25%">
     <?php
       // $control->displayArray();
       $liste=$control->getArray();
       //la liste contient tous les noms et ages
-      echo "<table class=\"table1\" style=\"width:25%\">";
       for($i=0;$i<count($liste);$i++){
         //on affiche une seule fois la destination et le nombre de place dans le tableau récapitulatif
         if($control->getArray()!=[]){
@@ -22,6 +22,17 @@
               echo '<td>Nombre de place : </td>';
               echo '<td>'.$control->getPlace().'</td>';
             echo '<tr/>';
+            echo '<tr>';
+              echo "<td>Assurance</td>";
+              echo '<td>';
+              if($control->getBox()){
+                echo "Oui";
+              }
+              else{
+                echo 'Non';
+              }
+              echo '</td>';
+            echo '</tr>';
           }
           echo '<tr>';
             echo '<td>Nom : </td>';
@@ -34,8 +45,8 @@
           echo '</tr>';
         }
       }
-    echo '</table>';
     ?>
+    </table>
     <table>
       <tr>
         <td><input type='submit' name='page_precedente' value='page precedente'/></td>

@@ -15,6 +15,12 @@ else
 //Faut faire des conditions pour vérifier si la valeur est plus petite que 0 avec (int) !!!!!! -- fait
 if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && !$control->analyseArray([$_POST['destination'],$_POST['place']])){
   // $control->setErrorText(False);
+  if(!empty($_POST['case'])){
+    $control->setBox(True);
+  }
+  else{
+    $control->setBox(False);
+  }
   $control->setDestination($_POST['destination']);
   //Permet de comparer le nombre de place, c'est à dire le nombre déjà stocké et le nombre mis dans le champ, lorsqu'on passe de la 1ère page à la 2ème page.
   //En effet dans Second_page on travail uniquement avec le nombre de place et non pas avec la taille de la liste.
@@ -67,6 +73,12 @@ else
     echo "Erreur 1ere page -> Page courante : ".$control->currentPage();
     $control->setDestination($_POST['destination']);
     $control->setPlace($_POST['place']);
+    if(!empty($_POST['case'])){
+      $control->setBox(True);
+    }
+    else{
+      $control->setBox(False);
+    }
   }
   elseif($control->currentPage()=='Second_page.php'){
     echo "Erreur 2eme page -> Page courante : ".$control->currentPage();

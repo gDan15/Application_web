@@ -8,14 +8,16 @@ class Model{
   private $state_place;
   private $page;
   private $error;
+  private $box;
 
-  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
     $this->page=$page;
     $this->state_place=$state_place;
     $this->error=$error;
+    $this->box=$box;
   }
   public function getPlace(){
     return $this->place;
@@ -91,6 +93,12 @@ class Model{
   }
   public function getErrorText(){
     return $this->error;
+  }
+  public function setBox($box){
+    $this->box=$box;
+  }
+  public function getBox(){
+    return $this->box;
   }
   // //Si il y a un élément vide dans la liste, cette fonction renvoie True
   // public function emptyElement($array){

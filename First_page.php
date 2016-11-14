@@ -36,13 +36,27 @@
         ?>
       </td>
       </tr>
+      <tr>
+        <td>Assurance</td>
+        <td>
+        <?php
+          if(isset($control)){
+            echo "<input type=\"checkbox\" name=\"case\" value=\"case\"";
+            if($control->getBox()){
+              echo "checked";
+            }
+            echo "/>";
+          }
+        ?>
+        </td>
+      </tr>
     </table>
-    <table.ver1>
+    <table>
       <tr>
         <td> <input type="submit" value="continuer" name="continuer"> </td>
         <td> <input type="submit" value="annuler" name="annuler"/> </td>
       </tr>
-    </table.ver2>
+    </table>
     <form>
   </body>
 </html>
