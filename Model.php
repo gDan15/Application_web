@@ -9,8 +9,9 @@ class Model{
   private $page;
   private $error;
   private $box;
+  private $price;
 
-  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
@@ -18,6 +19,7 @@ class Model{
     $this->state_place=$state_place;
     $this->error=$error;
     $this->box=$box;
+    $this->price=$price;
   }
   public function getPlace(){
     return $this->place;
@@ -34,16 +36,34 @@ class Model{
   public function addArray($element){
     array_push($this->array,$element);
   }
+  //Si il y plus de 10 places demandées alors cette fonction retourne True
+  public function analysePlace($place){
+    if((int)$place>10){
+      return True;
+    }
+    return False;
+  }
   //Cette fonction va vérifier si les données entrées dans la liste sont bien une suite de string suivit d'un int. Retourne true si un élément n'est pas bon.
+  //Cette fonction calcul aussi le prix du voyage en fonction de l'âge des différentes personnes et de l'assurance annulation.
   public function analyseArray($array){
     for($i=0;$i<count($array);$i++){
       // if(gettype($array[$i])!='string' || !is_numeric($array[$i+1]) || $array[$i]=="" || $array[$i+1]=="" || $array[$i+1]=='0')
       if(is_numeric($array[$i]) || $array[$i]=="" || (int)($array[$i+1])<=0 || (int)($array[$i+1])>=100){
       //if(!is_numeric($array[$i]) && $array[$i]!="" && (int)($array[$i+1])>0 && (int)($array[$i+1])<100)
+        $this->price=0;
         return True;
+      }
+      elseif((int)($array[$i+1])<=12){
+        $this->price=$this->price+10;
+      }
+      else{
+        $this->price=$this->price+15;
       }
       //On analyse à chaque fois une 'paire' d'élément dans la liste, ce qui fait qu'il faut incrémenter de 2 à chaque itération
       $i=$i+1;
+    }
+    if($this->box){
+      $this->price=$this->price+20;
     }
     return False;
   }
@@ -99,6 +119,12 @@ class Model{
   }
   public function getBox(){
     return $this->box;
+  }
+  public function getPrice(){
+    return $this->price;
+  }
+  public function setPrice($price){
+    $this->price=$price;
   }
   // //Si il y a un élément vide dans la liste, cette fonction renvoie True
   // public function emptyElement($array){
