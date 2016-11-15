@@ -57,13 +57,22 @@ elseif(!empty($_POST['confirmer']) && !$control->analyseArray($_POST['Info'])){
   $control->setPage('Third_page.php');
   include 'Third_page.php';
 }
-elseif(!empty($_POST['annuler'])){
-  $control->setDestination('');
-  $control->setPlace('');
-  //Il ne faut pas qu'il y ait des messages d'erreurs quand on appuie sur le bouton 'annuler'
-  $control->setErrorText(False);
-  include 'First_page.php';
+elseif(!empty($_POST['suivant'])){
+  $control->currentPage('Fourth_page.php');
+  include 'Fourth_page.php';
+}
+elseif(!empty($_POST['page_acceuil'])){
+  $control->currentPage('First_page.php');
   $control->setState(True);
+  include 'First_page.php';
+}
+elseif(!empty($_POST['annuler'])){
+  // $control->setDestination('');
+  // $control->setPlace('');
+  //Il ne faut pas qu'il y ait des messages d'erreurs liés aux champ vide quand on appuie sur le bouton 'annuler'
+  $control->setErrorText(False);
+  $control->setState(True);
+  include 'First_page.php';
 }
 else
 {
@@ -96,6 +105,4 @@ if($control->state()==True)
 {
   session_unset();
 }
-
-// session_unset();
 ?>

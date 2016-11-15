@@ -22,17 +22,6 @@
               echo '<td>Nombre de place : </td>';
               echo '<td>'.$control->getPlace().'</td>';
             echo '<tr/>';
-            echo '<tr>';
-              echo "<td>Assurance</td>";
-              echo '<td>';
-              if($control->getBox()){
-                echo "Oui";
-              }
-              else{
-                echo 'Non';
-              }
-              echo '</td>';
-            echo '</tr>';
           }
           echo '<tr>';
             echo '<td>Nom : </td>';
@@ -45,12 +34,24 @@
           echo '</tr>';
         }
       }
+      echo '<tr>';
+        echo "<td>Assurance annulation</td>";
+        echo '<td>';
+        if($control->getBox()){
+          echo "OUI";
+        }
+        else{
+          echo 'NON';
+        }
+        echo '</td>';
+      echo '</tr>';
     ?>
     </table>
     <table>
       <tr>
         <td><input type='submit' name='page_precedente' value='page precedente'/></td>
         <td><input type='submit' name='annuler' value='annuler'/></td>
+        <td><input type='submit' name='suivant' value='suivant'/></td>
       </tr>
     </table>
   </form>
