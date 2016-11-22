@@ -13,7 +13,7 @@ else
 //Aller voir différence entre & et &&
 //Il faut rajouter une case pour cocher
 //Faut faire des conditions pour vérifier si la valeur est plus petite que 0 avec (int) !!!!!! -- fait
-if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && !$control->analysePlace($_POST['place'])){
+if(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && $control->analysePlace($_POST['place']) && !is_numeric($_POST['destination'])){
   // $control->setErrorText(False);
   if(!empty($_POST['case'])){
     $control->setBox(True);

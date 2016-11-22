@@ -38,7 +38,7 @@ class Model{
   }
   //Si il y plus de 10 places demandées alors cette fonction retourne True
   public function analysePlace($place){
-    if((int)$place>10){
+    if((int)$place<10 && is_numeric($place)){
       return True;
     }
     return False;
