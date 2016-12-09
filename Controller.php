@@ -1,5 +1,6 @@
 <?php
 include 'Model.php';
+
 session_start();
 //Si il y a quelque chose dans la variable de session on récupère ce qui a dedans.
 if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
