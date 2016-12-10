@@ -10,6 +10,13 @@ catch(Exception $e)
   die('Erreur : '.$e->getMessage());
 }
 $reponse=$bdd->query('SELECT * FROM jeux_video');
+// On ajoute une entrée dans la table jeux_video
+// $bdd->exec('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires)
+// VALUES(\'Battlefield 1942\', \'Patrick\', \'PC\', 45, 50, \'2nde guerre mondiale\')');
+//permet de supprimer toutes les entrées dont les noms sont égos à Battlefield 1942
+$bdd->exec('DELETE FROM jeux_video WHERE nom=\'Dead\'');
+
+
 while($donnees = $reponse->fetch())
 {
 ?>
