@@ -19,7 +19,7 @@
         <tr>
           <td> Destination  </td>
   				<td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getDestination()?>' name="destination"/> </td>
-  			</tr>
+        </tr>
         <tr>
           <td>
           <?php
@@ -58,13 +58,13 @@
           ?>
           </td>
         </tr>
-      </table>
-      <table>
+      </table1>
+      <table class='table1'>
         <tr>
           <td> <input type="submit" value="continuer" name="continuer"> </td>
           <td> <input type="submit" value="annuler" name="annuler"/> </td>
         </tr>
-      </table>
+      </table1>
     <form>
   </body>
 </html>

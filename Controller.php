@@ -3,6 +3,7 @@ include 'Model.php';
 
 session_start();
 //Si il y a quelque chose dans la variable de session on récupère ce qui a dedans.
+
 if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
 {
   $control = unserialize($_SESSION['Variable']);
@@ -11,6 +12,27 @@ else
 {
   $control = new Model();
 }
+
+//Name of the database we want to connect to or create
+$dbname='Application';
+try
+{
+  $bdd = new PDO('mysql:host=localhost','root','');
+  $bdd->query("CREATE DATABASE IF NOT EXISTS $dbname");
+  $bdd->query("use $dbname");
+  $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Destination TEXT(30) NOT NULL,
+    Assurance BOOLEAN(30) NOT NULL,
+    Total TEXT(50),
+    NomAge TEXT(50)
+  )");
+}
+catch(Exception $e)
+{
+  die('Erreur : '.$e->getMessage());
+}
+
 //When the program is started, the first page must be displayed without any warning messages.
 if(empty($control->getDestination()) && empty($control->getPlace()) && empty($_POST["continuer"])){
   $control->setErrorText(False);
@@ -66,6 +88,12 @@ elseif(!empty($_POST['confirmer']) && !$control->analyseArray($_POST['Info'])){
 }
 elseif(!empty($_POST['suivant'])){
   $control->currentPage('Fourth_page.php');
+  $dest=$control->getDestination();
+  $assurance=$control->getBox();
+  $total=$control->getPrice();
+  $sql="INSERT INTO Reservation (Destination, Assurance, Total, NomAge) VALUES ('$dest','$assurance','$total','tets')";
+  $result=$bdd->exec($sql);
+  var_dump($result);
   include 'Fourth_page.php';
 }
 elseif(!empty($_POST['page_acceuil'])){

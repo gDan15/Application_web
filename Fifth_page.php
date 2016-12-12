@@ -6,22 +6,29 @@
   <body>
     <form method="POST" action="Controller_manager.php">
       <title>Liste des réservations</title>
-      <table class="table1">
+      <table>
         <tr>
           <td> Destination </td>
           <td> Assurance </td>
           <td> Total </td>
           <td> Nom - Age </td>
+          <td> Editer </td>
+          <td> Supprimer </td>
         </tr>
-        <!-- <?php
-          $reponse=$bdd->query('SELECT * FROM jeux_video');
+        <tr>
+          <?php
+          $reponse=$bdd->query('SELECT * FROM Reservation');
           while($donnees = $reponse->fetch()){
-        ?> -->
-
-        <!-- <?php
+            echo '<td>'.$donnees['Destination'].'</td>';
+            echo '<td>'.$donnees['Assurance'].'</td>';
+            echo '<td>'.$donnees['Total'].'</td>';
+            echo '<td>'.$donnees['NomAge'].'</td>';
+            echo '<td> <input type="submit" value="continuer" name="Editer"> </td>';
+            echo '<td> <input type="submit" value="continuer" name="Supprimer"> </td>';
           }
-        ?> -->
-      </table1>
+         ?>
+        </tr>
+      </table>
     </form>
   </body>
 </html>

@@ -1,18 +1,31 @@
 <?php
-// Connexion à la DB
+include 'Model.php';
+
+//Name of the database we want to connect to or create
+$dbname='Application';
+
 try
 {
-  $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8','root','');
-  //echo 'est rentre dans le try';
+  $bdd = new PDO('mysql:host=localhost','root','');
+  $bdd->query("CREATE DATABASE IF NOT EXISTS $dbname");
+  $bdd->query("use $dbname");
+  $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Destination TEXT(30) NOT NULL,
+    Assurance BOOLEAN(30) NOT NULL,
+    Total TEXT(50),
+    NomAge TEXT(50)
+  )");
 }
 catch(Exception $e)
 {
   die('Erreur : '.$e->getMessage());
 }
+
 include 'Fifth_page.php';
 // $reponse=$bdd->query('SELECT * FROM jeux_video');
 
-// On ajoute une entrée dans la table jeux_video
+// // On ajoute une entrée dans la table jeux_video
 // $bdd->exec('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires)
 // VALUES(\'Battlefield 1942\', \'Patrick\', \'PC\', 45, 50, \'2nde guerre mondiale\')');
 

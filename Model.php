@@ -21,6 +21,7 @@ class Model{
     $this->box=$box;
     $this->price=$price;
   }
+
   public function getPlace(){
     return $this->place;
   }
@@ -114,6 +115,7 @@ class Model{
   public function getErrorText(){
     return $this->error;
   }
+  //If this function is set to True, the assurance is valid
   public function setBox($box){
     $this->box=$box;
   }
