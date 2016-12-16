@@ -3,7 +3,10 @@ include 'Model.php';
 
 //Name of the database we want to connect to or create
 $dbname='Application';
-
+if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
+{
+  $control = unserialize($_SESSION['Variable']);
+}
 try
 {
   $bdd = new PDO('mysql:host=localhost','root','');
@@ -12,17 +15,20 @@ try
   $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Destination TEXT(30) NOT NULL,
-    Assurance BOOLEAN(30) NOT NULL,
+    Assurance BOOLEAN NOT NULL,
     Total TEXT(50),
     NomAge TEXT(50)
   )");
 }
+
 catch(Exception $e)
 {
   die('Erreur : '.$e->getMessage());
 }
 
 include 'Fifth_page.php';
+
+
 // $reponse=$bdd->query('SELECT * FROM jeux_video');
 
 // // On ajoute une entrée dans la table jeux_video

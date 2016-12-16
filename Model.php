@@ -37,7 +37,7 @@ class Model{
   public function addArray($element){
     array_push($this->array,$element);
   }
-  //Si il y plus de 10 places demandées alors cette fonction retourne True
+  //If the number of place is less than 10 then this function returns True
   public function analysePlace($place){
     if((int)$place<10 && is_numeric($place)){
       return True;
@@ -137,6 +137,15 @@ class Model{
   //     }
   //   }
   // }
+  //Transform string into a html list
+  // public function stringToHtmlList($str){
+  //   $list=explode(":",$str);
+  //   for($i=0;$i<count($list);$i++){
+  //     echo $list[$i]." --- ".$list[$i+1]."</br>";
+  //     $i=$i+1;
+  //   }
+  // }
+
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';

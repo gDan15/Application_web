@@ -1,7 +1,10 @@
 <?php
 include 'Model.php';
 
-session_start();
+//A new session is started if it has not been done yet
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //Si il y a quelque chose dans la variable de session on récupère ce qui a dedans.
 
 if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
@@ -23,7 +26,7 @@ try
   $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Destination TEXT(30) NOT NULL,
-    Assurance BOOLEAN(30) NOT NULL,
+    Assurance BOOLEAN NOT NULL,
     Total TEXT(50),
     NomAge TEXT(50)
   )");
@@ -91,7 +94,11 @@ elseif(!empty($_POST['suivant'])){
   $dest=$control->getDestination();
   $assurance=$control->getBox();
   $total=$control->getPrice();
-  $sql="INSERT INTO Reservation (Destination, Assurance, Total, NomAge) VALUES ('$dest','$assurance','$total','tets')";
+  $array=$control->getArray();
+  //To add the names and ages, we will first transform the array into a single string with implode ( ":",$nom) where : is the element between all the elements.
+  //After extracting the string, we can turn it back into an array using explode(":",$nom)
+  $str=implode(":",$array);
+  $sql="INSERT INTO Reservation (Destination, Assurance, Total, NomAge) VALUES ('$dest','$assurance','$total','$str')";
   $result=$bdd->exec($sql);
   var_dump($result);
   include 'Fourth_page.php';
