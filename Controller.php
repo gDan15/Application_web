@@ -95,6 +95,12 @@ elseif(!empty($_POST['suivant'])){
   $assurance=$control->getBox();
   $total=$control->getPrice();
   $array=$control->getArray();
+  if($assurance==True){
+    $assurance=1;
+  }
+  else{
+    $assurance=0;
+  }
   //To add the names and ages, we will first transform the array into a single string with implode ( ":",$nom) where : is the element between all the elements.
   //After extracting the string, we can turn it back into an array using explode(":",$nom)
   $str=implode(":",$array);

@@ -25,8 +25,14 @@ catch(Exception $e)
 {
   die('Erreur : '.$e->getMessage());
 }
-
+if(!empty('Editer')){
+  
+}
 include 'Fifth_page.php';
+
+// if(){
+//
+// }
 
 
 // $reponse=$bdd->query('SELECT * FROM jeux_video');
