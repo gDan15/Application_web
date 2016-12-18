@@ -1,6 +1,21 @@
 <?php
 //Name of the database we want to connect to or create
+include_once 'Model.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+//Si il y a quelque chose dans la variable de session on récupère ce qui a dedans.
+
+if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
+{
+  $control = unserialize($_SESSION['Variable']);
+}
+else
+{
+  $control = new Model();
+}
 $dbname='Application';
+$control->getDestination();
 try
 {
   $bdd = new PDO('mysql:host=localhost','root','');

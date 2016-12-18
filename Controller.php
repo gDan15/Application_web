@@ -1,5 +1,5 @@
 <?php
-include 'Model.php';
+include_once 'Model.php';
 
 //A new session is started if it has not been done yet
 if (session_status() == PHP_SESSION_NONE) {
