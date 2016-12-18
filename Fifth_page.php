@@ -45,7 +45,10 @@
                   }
                 echo '</table>';
               echo '</td>';
-              echo '<td> <input type="submit" value="Editer" name="Editer"> </td>';
+              echo '<td> <input type="submit" value="Editer" name="';
+              echo "Editer_".$donnees['id']."_".$donnees['Destination'];
+              echo '"> </td>';
+              // $control->addButton("Editer_".$donnees['id']."_".$donnees['Destination']);
               echo '<td> <input type="submit" value="Supprimer" name="Supprimer"> </td>';
             echo '</tr>';
           }

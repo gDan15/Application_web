@@ -10,8 +10,9 @@ class Model{
   private $error;
   private $box;
   private $price;
+  private $buttonList;
 
-  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0, $buttonList=[]){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
@@ -20,6 +21,7 @@ class Model{
     $this->error=$error;
     $this->box=$box;
     $this->price=$price;
+    $this->buttonList=$buttonList;
   }
 
   public function getPlace(){
@@ -145,7 +147,12 @@ class Model{
   //     $i=$i+1;
   //   }
   // }
-
+  public function addButton($button){
+    array_push($this->array,$button);
+  }
+  public function buttonList(){
+    return $this->buttonList;
+  }
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';

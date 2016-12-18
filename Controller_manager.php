@@ -1,12 +1,6 @@
 <?php
-include 'Model.php';
-
 //Name of the database we want to connect to or create
 $dbname='Application';
-if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
-{
-  $control = unserialize($_SESSION['Variable']);
-}
 try
 {
   $bdd = new PDO('mysql:host=localhost','root','');
@@ -25,11 +19,24 @@ catch(Exception $e)
 {
   die('Erreur : '.$e->getMessage());
 }
-if(!empty('Editer')){
-  
+$reponse=$bdd->query('SELECT * FROM Reservation');
+$i=0;
+while($donnees = $reponse->fetch()){
+  if(!empty($_POST["Editer_".$donnees['id']."_".$donnees['Destination']])){
+    $i=1;
+    // echo "Editer_".$donnees['id']."_".$donnees['Destination'];
+    include "Controller.php";
+  }
+  //Si aucun bouton n'a été appuyé, on continue à afficher la page 5
+  elseif($i==0){
+    include 'Fifth_page.php';
+  }
 }
-include 'Fifth_page.php';
-
+// while($donnees = $reponse->fetch()){
+//   if(!empty($_POST('Editer'))){
+//     echo $donnees['Destination'];
+//   }
+// }
 // if(){
 //
 // }
