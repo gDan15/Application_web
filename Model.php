@@ -10,9 +10,10 @@ class Model{
   private $error;
   private $box;
   private $price;
-  private $buttonList;
+  private $button;
+  private $stateFifth;
 
-  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0, $buttonList=[]){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0, $button=[], $stateFifth='0'){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
@@ -21,7 +22,8 @@ class Model{
     $this->error=$error;
     $this->box=$box;
     $this->price=$price;
-    $this->buttonList=$buttonList;
+    $this->buttonList=$button;
+    $this->stateFifth=$stateFifth;
   }
 
   public function getPlace(){
@@ -147,11 +149,17 @@ class Model{
   //     $i=$i+1;
   //   }
   // }
-  public function addButton($button){
-    array_push($this->array,$button);
+  public function button($button){
+    $this->button=$button;
   }
   public function buttonList(){
     return $this->buttonList;
+  }
+  public function stateFifth(){
+    return $this->stateFifth;
+  }
+  public function setStateFifth($state){
+    $this->stateFifth=$state;
   }
   public function displayArray(){
     foreach($this->array as $value){

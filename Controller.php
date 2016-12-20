@@ -35,9 +35,9 @@ catch(Exception $e)
 {
   die('Erreur : '.$e->getMessage());
 }
-
-//When the program is started, the first page must be displayed without any warning messages.
+//When the program starts, the first page must be displayed without any error messages.
 if(empty($control->getDestination()) && empty($control->getPlace()) && empty($_POST["continuer"])){
+  echo $control->getDestination();
   $control->setErrorText(False);
   include("First_page.php");
 }

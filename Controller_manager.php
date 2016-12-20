@@ -1,5 +1,5 @@
 <?php
-//Name of the database we want to connect to or create
+// var_dump($_POST);
 include_once 'Model.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -35,18 +35,40 @@ catch(Exception $e)
   die('Erreur : '.$e->getMessage());
 }
 $reponse=$bdd->query('SELECT * FROM Reservation');
-$i=0;
+//A utiliser si on utilise prepare au lieu de query ci dessus
+// $reponse->execute();
+//If none of the buttons are pressed, the Fifth_page is displayed
+if(empty($_POST)){
+  include('Fifth_page.php');
+}
 while($donnees = $reponse->fetch()){
-  if(!empty($_POST["Editer_".$donnees['id']."_".$donnees['Destination']])){
-    $i=1;
-    // echo "Editer_".$donnees['id']."_".$donnees['Destination'];
-    include "Controller.php";
+  if(isset($_POST[$donnees['id']])){
+    $control->setDestination($donnees['Destination']);
+    // $array=$control->getArray();
+    $str=$donnees["NomAge"];
+    $array=explode(":", $str);
+    $control->setPlace(count($array)/2);
+    include 'First_page.php';
   }
-  //Si aucun bouton n'a été appuyé, on continue à afficher la page 5
-  elseif($i==0){
-    include 'Fifth_page.php';
+  elseif(!empty($_POST['Nouvelle_reservation'])){
+    include 'First_page.php';
   }
 }
+// while($donnees = $reponse->fetch()){
+//   if(!empty($_POST[$donnees['id']])){
+//     echo $donnees['Destination'];
+//     // $control->button($donnees['id']);
+//     // $control->setDestination($donnees['Destination']);
+//     // $list=explode(":",$donnees['NomAge']);
+//     // $place=count($list)/2;
+//     // $control->setPlace($place);
+//     // echo $control->getDestination();
+//     // echo $donnees['id'];
+//     // include "Controller.php";
+//   }
+    //Si aucun bouton n'a été appuyé, on continue à afficher la page 5
+// }
+
 // while($donnees = $reponse->fetch()){
 //   if(!empty($_POST('Editer'))){
 //     echo $donnees['Destination'];

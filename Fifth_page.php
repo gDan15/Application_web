@@ -8,7 +8,7 @@
       <title>Liste des réservations</title>
       <table width="800">
         <tr>
-          <td><input type='submit' value='Nouvelle réservation' name='Nouvelle réservation'></td>
+          <td><input type='submit' value='Nouvelle réservation' name='Nouvelle_reservation'></td>
         </tr>
         <tr>
           <td> Id </td>
@@ -46,9 +46,9 @@
                 echo '</table>';
               echo '</td>';
               echo '<td> <input type="submit" value="Editer" name="';
-              echo "Editer_".$donnees['id']."_".$donnees['Destination'];
+              echo $donnees['id'];
               echo '"> </td>';
-              // $control->addButton("Editer_".$donnees['id']."_".$donnees['Destination']);
+              // $control->addButton($donnees['id']);
               echo '<td> <input type="submit" value="Supprimer" name="Supprimer"> </td>';
             echo '</tr>';
           }
