@@ -85,6 +85,7 @@ class Model{
       return $this->array;
     }
   }
+
   public function setArray($array){
     $this->array=$array;
   }
@@ -141,26 +142,6 @@ class Model{
   //     }
   //   }
   // }
-  //Transform string into a html list
-  // public function stringToHtmlList($str){
-  //   $list=explode(":",$str);
-  //   for($i=0;$i<count($list);$i++){
-  //     echo $list[$i]." --- ".$list[$i+1]."</br>";
-  //     $i=$i+1;
-  //   }
-  // }
-  public function button($button){
-    $this->button=$button;
-  }
-  public function buttonList(){
-    return $this->buttonList;
-  }
-  public function stateFifth(){
-    return $this->stateFifth;
-  }
-  public function setStateFifth($state){
-    $this->stateFifth=$state;
-  }
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';

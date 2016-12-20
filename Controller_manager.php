@@ -15,7 +15,6 @@ else
   $control = new Model();
 }
 $dbname='Application';
-$control->getDestination();
 try
 {
   $bdd = new PDO('mysql:host=localhost','root','');
@@ -48,12 +47,15 @@ while($donnees = $reponse->fetch()){
     $str=$donnees["NomAge"];
     $array=explode(":", $str);
     $control->setPlace(count($array)/2);
+    $a=$control->setArray($array);
     include 'First_page.php';
   }
   elseif(!empty($_POST['Nouvelle_reservation'])){
-    include 'First_page.php';
+    echo 'Nouvelle_reservation';
+    include 'Controller.php';
   }
 }
+$_SESSION['Variable'] = serialize($control);
 // while($donnees = $reponse->fetch()){
 //   if(!empty($_POST[$donnees['id']])){
 //     echo $donnees['Destination'];
