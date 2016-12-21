@@ -34,8 +34,6 @@ catch(Exception $e)
   die('Erreur : '.$e->getMessage());
 }
 $reponse=$bdd->query('SELECT * FROM Reservation');
-//A utiliser si on utilise prepare au lieu de query ci dessus
-// $reponse->execute();
 //If none of the buttons are pressed, the Fifth_page is displayed
 if(empty($_POST)){
   include('Fifth_page.php');

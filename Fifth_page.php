@@ -6,18 +6,16 @@
   <body>
     <form method="POST" action="Controller_manager.php">
       <title>Liste des réservations</title>
-      <table width="800">
+      <input type='submit' value='Nouvelle réservation' name='Nouvelle_reservation'>
+      <table width="800" class="table1">
         <tr>
-          <td><input type='submit' value='Nouvelle réservation' name='Nouvelle_reservation'></td>
-        </tr>
-        <tr>
-          <td> Id </td>
-          <td> Destination </td>
-          <td> Assurance </td>
-          <td> Total </td>
-          <td> Nom --- Age </td>
-          <td> Editer </td>
-          <td> Supprimer </td>
+          <th> Id </th>
+          <th> Destination </th>
+          <th> Assurance </th>
+          <th> Total </th>
+          <th> Nom --- Age </th>
+          <th> Editer </th>
+          <th> Supprimer </th>
         </tr>
           <?php
           $reponse=$bdd->query('SELECT * FROM Reservation');
@@ -53,7 +51,7 @@
             echo '</tr>';
           }
          ?>
-      </table>
+      </table1>
     </form>
   </body>
 </html>
