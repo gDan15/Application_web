@@ -12,8 +12,10 @@ class Model{
   private $price;
   private $button;
   private $stateFifth;
+  private $update;
+  private $idUpdate;
 
-  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0, $button=[], $stateFifth='0'){
+  public function __construct($destination='',$place='',$state=False,$page='First_page.php',$state_place=0,$error=False,$box=False,$price=0, $button=[], $stateFifth='0',$update=False){
     $this->place=$place;
     $this->destination=$destination;
     $this->state=$state;
@@ -24,6 +26,7 @@ class Model{
     $this->price=$price;
     $this->buttonList=$button;
     $this->stateFifth=$stateFifth;
+    $this->update=$update;
   }
 
   public function getPlace(){
@@ -133,6 +136,12 @@ class Model{
   public function setPrice($price){
     $this->price=$price;
   }
+  public function stateUpdate(){
+    return $this->update;
+  }
+  public function setStateUpdate($update){
+    $this->update=$update;
+  }
   // //Si il y a un élément vide dans la liste, cette fonction renvoie True
   // public function emptyElement($array){
   //   foreach($array as $element){
@@ -142,6 +151,12 @@ class Model{
   //     }
   //   }
   // }
+  public function idUpdate(){
+    return $this->idUpdate;
+  }
+  public function setIdUpdate($idUpdate){
+    $this->idUpdate=$idUpdate;
+  }
   public function displayArray(){
     foreach($this->array as $value){
       echo '<br>';

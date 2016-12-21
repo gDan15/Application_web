@@ -40,17 +40,21 @@ $reponse=$bdd->query('SELECT * FROM Reservation');
 if(empty($_POST)){
   include('Fifth_page.php');
 }
-while($donnees = $reponse->fetch()){
-  if(isset($_POST[$donnees['id']])){
-    $control->setDestination($donnees['Destination']);
-    // $array=$control->getArray();
-    $str=$donnees["NomAge"];
-    $array=explode(":", $str);
-    $control->setPlace(count($array)/2);
-    $a=$control->setArray($array);
-    include 'First_page.php';
+if(!empty($_POST)){
+  while($donnees = $reponse->fetch()){
+    if(isset($_POST[$donnees['id']])){
+      $control->setDestination($donnees['Destination']);
+      // $array=$control->getArray();
+      $control->stateUpdate(True);
+      $control->setIdUpdate($donnees['Destination']);
+      $str=$donnees["NomAge"];
+      $array=explode(":", $str);
+      $control->setPlace(count($array)/2);
+      $a=$control->setArray($array);
+      include 'First_page.php';
+    }
   }
-  elseif(!empty($_POST['Nouvelle_reservation'])){
+  if(!empty($_POST['Nouvelle_reservation'])){
     echo 'Nouvelle_reservation';
     include 'Controller.php';
   }

@@ -2,9 +2,13 @@
   <head>
     <Title> Réservation </Title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <style>
+
+    </style>
   </head>
+
   <body>
-    <form method="POST" action="Controller.php">
+    <form method="POST" action="Routeur.php">
       <h1>Réservation</h1>
       <table>
         <tr>
@@ -25,7 +29,7 @@
           <?php
             if(isset($control)){
               if($control->getErrorText() && ($control->getDestination()=="" || is_numeric($control->getDestination()))){
-                echo "Veuillez entrer quelque chose de valide";
+                echo "<error> Veuillez entrer une destination valide </error>";
               }
             }
           ?>
@@ -40,7 +44,7 @@
           <?php
             if(isset($control)){
               if($control->getErrorText() && ($control->getPlace()=="" || (int)($control->getPlace())<=0 || (int)($control->getPlace())>=100)){
-                echo "Veuillez entrer quelque chose de valide";
+                echo "<error> Il faut qu'il y ait minimum une place et maximum 10 places </error>";
               }
             }
           ?>

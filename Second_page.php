@@ -2,6 +2,13 @@
   <head>
     <title> Reservation -- Détails </title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <style>
+    error{
+      font-family: 'alex_brushregular', Courier, "Lucida Console", monospace;
+      color: Red;
+      font-size: 70%;
+    }
+    </style>
   </head>
   <body>
   <form method="POST" action="Controller.php">
@@ -23,7 +30,7 @@
           echo "<td>";
           if(isset($control)){
             if($control->getErrorText() && ($control->getArray()[$i*2]=="" || is_numeric($control->getArray()[$i*2]))){
-              echo "Veuillez entrer quelque chose de valide";
+              echo "<error> Veuillez entrer un nom valide </error>";
             }
           }
           echo "</td>";
@@ -43,7 +50,7 @@
           echo "<td>";
           if(isset($control)){
             if($control->getErrorText() && ($control->getArray()[$i*2+1]=="" || (int)($control->getArray()[$i*2+1])<=0 || (int)($control->getArray()[$i*2+1])>=100)){
-              echo "Veuillez entrer quelque chose de valide";
+              echo "<error> Veuillez entrer un âge valide compris entre 1 et 99 inclus </error>";
             }
           }
           echo "</td>";
