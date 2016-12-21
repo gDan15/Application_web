@@ -2,13 +2,6 @@
   <head>
     <title> Reservation -- Détails </title>
     <link rel="stylesheet" type="text/css" href="Style.css">
-    <style>
-    error{
-      font-family: 'alex_brushregular', Courier, "Lucida Console", monospace;
-      color: Red;
-      font-size: 70%;
-    }
-    </style>
   </head>
   <body>
   <form method="POST" action="Controller.php">

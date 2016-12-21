@@ -90,16 +90,16 @@ elseif(!empty($_POST['suivant'])){
   }
   //To add the names and ages, we will first transform the array into a single string with implode ( ":",$nom) where : is the caracter between all the elements.
   //After extracting the string, we can turn it back into an array using explode(":",$nom)
-  echo $control->stateUpdate();
   $str=implode(":",$array);
-  if($control->stateUpdate()=='False'){
+  if($control->stateUpdate()==False){
     $sql="INSERT INTO Reservation (Destination, Assurance, Total, NomAge) VALUES ('$dest','$assurance','$total','$str')";
   }
   else{
     $id=$control->idUpdate();
-    $sql="UPDATE Reservation SET Destination='$dest' Assurance='$assurance' Total='$total' NomAge='$str' WHERE id='$id'";
+    $sql="UPDATE Reservation SET Destination='$dest', Assurance='$assurance', Total='$total', NomAge='$str' WHERE id='$id'";
   }
-  $result=$bdd->exec($sql);
+  $stmt = $bdd->prepare($sql);
+  $exec=$stmt->execute();
   // var_dump($result);
   include 'Fourth_page.php';
 }

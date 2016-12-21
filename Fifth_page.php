@@ -33,7 +33,6 @@
               }
               echo '<td>'.$assurance.'</td>';
               echo '<td>'.$donnees['Total'].'</td>';
-              // echo '<td>'.$donnees['NomAge'].'</td>';
               echo '<td>';
               $list=explode(":",$donnees['NomAge']);
                 echo '<table>';
@@ -48,8 +47,9 @@
               echo '<td> <input type="submit" value="Editer" name="';
               echo $donnees['id'];
               echo '"> </td>';
-              // $control->addButton($donnees['id']);
-              echo '<td> <input type="submit" value="Supprimer" name="Supprimer"> </td>';
+              echo '<td> <input type="submit" value="Supprimer" name="';
+              echo "Suppress".$donnees['id'];
+              echo '"> </td>';
             echo '</tr>';
           }
          ?>

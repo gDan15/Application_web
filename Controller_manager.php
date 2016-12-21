@@ -45,17 +45,28 @@ if(!empty($_POST)){
     if(isset($_POST[$donnees['id']])){
       $control->setDestination($donnees['Destination']);
       // $array=$control->getArray();
-      $control->stateUpdate(True);
-      $control->setIdUpdate($donnees['Destination']);
+      $control->setStateUpdate(True);
+      $control->setIdUpdate($donnees['id']);
       $str=$donnees["NomAge"];
       $array=explode(":", $str);
       $control->setPlace(count($array)/2);
       $a=$control->setArray($array);
+      if($donnees["Assurance"]==1){
+        $control->setBox(True);
+      }
+      else{
+        $control->setBox(False);
+      }
       include 'First_page.php';
+    }
+    elseif(!empty($_POST["Suppress".$donnees['id']])){
+      $id=$donnees['id'];
+      $sql = "DELETE FROM Reservation WHERE id=$id";
+      $bdd->exec($sql);
+      include 'Fifth_page.php';
     }
   }
   if(!empty($_POST['Nouvelle_reservation'])){
-    echo 'Nouvelle_reservation';
     include 'Controller.php';
   }
 }

@@ -63,12 +63,12 @@
           </td>
         </tr>
       </table1>
-      <table class='table1'>
+      <table>
         <tr>
           <td> <input type="submit" value="continuer" name="continuer"> </td>
           <td> <input type="submit" value="annuler" name="annuler"/> </td>
         </tr>
-      </table1>
+      </table>
     <form>
   </body>
 </html>

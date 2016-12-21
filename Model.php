@@ -88,7 +88,6 @@ class Model{
       return $this->array;
     }
   }
-
   public function setArray($array){
     $this->array=$array;
   }
@@ -142,15 +141,6 @@ class Model{
   public function setStateUpdate($update){
     $this->update=$update;
   }
-  // //Si il y a un élément vide dans la liste, cette fonction renvoie True
-  // public function emptyElement($array){
-  //   foreach($array as $element){
-  //     //Dès qu'il y a un élément vide, on retourne immédiatement 'True' en quittant la boucle.
-  //     if($element==""){
-  //       return True;
-  //     }
-  //   }
-  // }
   public function idUpdate(){
     return $this->idUpdate;
   }
