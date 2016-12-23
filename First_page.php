@@ -25,7 +25,7 @@
   				<td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getDestination()?>' name="destination"/> </td>
         </tr>
         <tr>
-          <td>
+          <td colspan="2">
           <?php
             if(isset($control)){
               if($control->getErrorText() && ($control->getDestination()=="" || is_numeric($control->getDestination()))){
@@ -40,7 +40,7 @@
           <td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getPlace() ?>' name="place"/> </td>
         </tr>
         <tr>
-          <td>
+          <td colspan="2">
           <?php
             if(isset($control)){
               if($control->getErrorText() && ($control->getPlace()=="" || (int)($control->getPlace())<=0 || (int)($control->getPlace())>=100)){
