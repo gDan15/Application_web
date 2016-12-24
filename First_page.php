@@ -2,27 +2,26 @@
   <head>
     <Title> Réservation </Title>
     <link rel="stylesheet" type="text/css" href="Style.css">
-    <style>
-
-    </style>
   </head>
-
   <body>
     <form method="POST" action="Routeur.php">
       <h1 align="center">Réservation</h1>
       <table align="center">
         <tr>
-          <td>Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</td>
+          <td align="left">Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</td>
         </tr>
         <tr>
-          <td>Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</td>
+          <td align="left">Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</td>
         </tr>
       </table>
+      </p>
       <br>
-      <!-- <table class="table1" align="center">
+      <table align="center">
         <tr>
-          <td> Destination  </td>
-  				<td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getDestination()?>' name="destination"/> </td>
+          <td colspan="2" align="left"> Destination  </td>
+        </tr>
+        <tr>
+  				<td colspan="2"> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getDestination()?>' name="destination"/> </td>
         </tr>
         <tr>
           <td colspan="2">
@@ -36,8 +35,10 @@
         </td>
         </tr>
         <tr>
-          <td> Nombre de place </td>
-          <td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getPlace() ?>' name="place"/> </td>
+          <td colspan="2" align="left"> Nombre de place </td>
+        </tr>
+        <tr>
+          <td colspan="2"> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getPlace() ?>' name="place"/> </td>
         </tr>
         <tr>
           <td colspan="2">
@@ -51,7 +52,7 @@
         </td>
         </tr>
         <tr>
-          <td>Assurance</td>
+          <td align="left">Assurance</td>
           <td>
           <?php
             echo "<input type=\"checkbox\" name=\"case\" value=\"case\"";
@@ -62,14 +63,14 @@
           ?>
           </td>
         </tr>
-      </table1> -->
-      div{
+      </table>
+      <!-- div{
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
-      }
-      <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstname">
+      } -->
+      <!-- <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname"> -->
 
       <table align="center">
         <tr>
