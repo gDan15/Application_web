@@ -9,8 +9,8 @@
 
   <body>
     <form method="POST" action="Routeur.php">
-      <h1>Réservation</h1>
-      <table>
+      <h1 align="center">Réservation</h1>
+      <table align="center">
         <tr>
           <td>Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</td>
         </tr>
@@ -19,7 +19,7 @@
         </tr>
       </table>
       <br>
-      <table class="table1">
+      <!-- <table class="table1" align="center">
         <tr>
           <td> Destination  </td>
   				<td> <input type="text" value='<?php if(isset($control) && !$control->state()) echo $control->getDestination()?>' name="destination"/> </td>
@@ -62,11 +62,19 @@
           ?>
           </td>
         </tr>
-      </table1>
-      <table>
+      </table1> -->
+      div{
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname">
+
+      <table align="center">
         <tr>
-          <td> <input type="submit" value="continuer" name="continuer"> </td>
-          <td> <input type="submit" value="annuler" name="annuler"/> </td>
+          <td> <input type="submit" value="continuer" class="button" name="continuer"> </td>
+          <td> <input type="submit" value="annuler" class="button" name="annuler"/> </td>
         </tr>
       </table>
     <form>
