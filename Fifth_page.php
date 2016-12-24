@@ -2,8 +2,10 @@
   <head>
     <title> Reservation -- Détails </title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   </head>
-  <body>
+  <body class="body2">
     <form method="POST" action="Controller_manager.php">
       <h1 align="center">Liste des réservations</h1>
       <table width="800" class="table2" align="center">
@@ -62,10 +64,10 @@
           }
          ?>
       </table>
-    </br>
+      </br>
       <center>
         <input type='submit' value='Nouvelle réservation' class="buttonNew" name='Nouvelle_reservation'>
       </center>
     </form>
-  </body>
+  </body2>
 </html>

@@ -2,9 +2,12 @@
   <head>
     <Title> Réservation </Title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   </head>
   <body>
     <form method="POST" action="Routeur.php">
+      <div class="w3-container w3-teal" align='left'>
       <h1 align="center">Réservation</h1>
       <table align="center">
         <tr>
@@ -78,6 +81,7 @@
           <td> <input type="submit" value="annuler" class="button" name="annuler"/> </td>
         </tr>
       </table>
+    </div>
     <form>
   </body>
 </html>

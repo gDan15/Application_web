@@ -2,12 +2,14 @@
   <head>
     <title> Reservation -- Détails </title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   </head>
   <body>
   <form method="POST" action="Controller.php">
     <h1 align="center">Détails des réservations</h1>
     <table class="table" align="center">
-      <?php
+        <?php
         $nombre=intval($control->getPlace('place'));
         for($i=0;$i<$nombre;$i++)
         {
@@ -31,8 +33,8 @@
           echo "</td>";
           echo "</tr>";
           echo "</tr>";
-          echo "<p class=\"big\">";
-          echo "</p>";
+          // echo "<p class=\"big\">";
+          // echo "</p>";
           echo "<tr>";
           echo "<td align='left'> Age </td>";
           echo "</tr>";
@@ -52,9 +54,9 @@
           }
           echo "</td>";
           echo "</tr>";
-          echo "</table>";
         }
       ?>
+    </table>
     <table align="center">
       <tr>
         <td> <input type='submit' name='page_precedente' class="button" value='page precedente'/> </td>
@@ -62,6 +64,7 @@
         <td> <input type='submit' name='annuler' class="button" value='annuler'/> </td>
       </tr>
     </table>
+      <!-- </div> -->
     </form>
   </body>
 </html>
