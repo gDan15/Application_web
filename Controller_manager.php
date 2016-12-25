@@ -1,11 +1,8 @@
 <?php
-// var_dump($_POST);
 include_once 'Model.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-//Si il y a quelque chose dans la variable de session on récupère ce qui a dedans.
-
 if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
 {
   $control = unserialize($_SESSION['Variable']);
@@ -40,9 +37,10 @@ if(empty($_POST)){
 }
 if(!empty($_POST)){
   while($donnees = $reponse->fetch()){
+    //Update the entry
     if(isset($_POST[$donnees['id']])){
       $control->setDestination($donnees['Destination']);
-      // $array=$control->getArray();
+      //Since the 'Editer' button has been pressed, the entry corresponding to the id has to be updated
       $control->setStateUpdate(True);
       $control->setIdUpdate($donnees['id']);
       $str=$donnees["NomAge"];
@@ -57,6 +55,7 @@ if(!empty($_POST)){
       }
       include 'First_page.php';
     }
+    //Suppress the data from the database
     elseif(!empty($_POST["Suppress".$donnees['id']])){
       $id=$donnees['id'];
       $sql = "DELETE FROM Reservation WHERE id=$id";
@@ -69,54 +68,4 @@ if(!empty($_POST)){
   }
 }
 $_SESSION['Variable'] = serialize($control);
-// while($donnees = $reponse->fetch()){
-//   if(!empty($_POST[$donnees['id']])){
-//     echo $donnees['Destination'];
-//     // $control->button($donnees['id']);
-//     // $control->setDestination($donnees['Destination']);
-//     // $list=explode(":",$donnees['NomAge']);
-//     // $place=count($list)/2;
-//     // $control->setPlace($place);
-//     // echo $control->getDestination();
-//     // echo $donnees['id'];
-//     // include "Controller.php";
-//   }
-    //Si aucun bouton n'a été appuyé, on continue à afficher la page 5
-// }
-
-// while($donnees = $reponse->fetch()){
-//   if(!empty($_POST('Editer'))){
-//     echo $donnees['Destination'];
-//   }
-// }
-// if(){
-//
-// }
-
-
-// $reponse=$bdd->query('SELECT * FROM jeux_video');
-
-// // On ajoute une entrée dans la table jeux_video
-// $bdd->exec('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires)
-// VALUES(\'Battlefield 1942\', \'Patrick\', \'PC\', 45, 50, \'2nde guerre mondiale\')');
-
-//permet de supprimer toutes les entrées dont les noms sont égos à Battlefield 1942
-// $bdd->exec('DELETE FROM jeux_video WHERE nom=\'Dead\'');
-
-
-// $donnees = $reponse->fetch()
-// <strong> echo $donnees['nom'];  </strong> <br/>
-
-// // Affichage des données
-// $reponse = $bdd->query('SELECT lastname FROM users');
-// while ($donnees = $reponse->fetch())
-// {
-//   echo $donnees['lastname'] . '<br />';
-// }
-// $reponse->closeCursor();
-// // Ajout d'un utilisateur
-// $bdd->exec(" INSERT INTO users SET lastname='Michel', firstname='Charles', email='cm@ecam.be', mobile='0478/123456' ) ;");
-// // Modification d'un utilisateur$
-// //$nb_modifs = $bdd->exec(" UPDATE users SET email = 'c.michel@ecam.be' WHERE lastname = 'Michel' ");
-// $reponse->closeCursor(); // Termine le traitement de la requête
 ?>

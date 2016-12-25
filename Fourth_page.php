@@ -1,7 +1,6 @@
 <html>
   <head>
-    <!-- <link rel='stylesheet' type="text/css" href="Style.css"> -->
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Style.css" media="screen" />
     <title>Confirmation</title>
   </head>
   <body>

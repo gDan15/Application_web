@@ -1,8 +1,7 @@
 <html>
   <head>
     <title> Reservation -- Détails </title>
-    <!-- <link rel="stylesheet" type="text/css" href="Style.css"> -->
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Style.css" media="screen" />
   </head>
   <body>
   <form method="POST" action="Controller.php">

@@ -1,8 +1,7 @@
 <html>
   <head>
     <Title> Réservation </Title>
-    <!-- <link rel="stylesheet" type="text/css" href="Style.css"> -->
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Style.css" media="screen" />
   </head>
   <body>
     <form method="POST" action="Routeur.php">
@@ -66,13 +65,6 @@
             </td>
           </tr>
         </table>
-        <!-- div{
-          border-radius: 5px;
-          background-color: #f2f2f2;
-          padding: 20px;
-        } -->
-        <!-- <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname"> -->
         <br>
         <table align="center">
           <tr>

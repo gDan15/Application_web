@@ -28,36 +28,38 @@ class Model{
     $this->stateFifth=$stateFifth;
     $this->update=$update;
   }
-
+  //Returns the number place
   public function getPlace(){
     return $this->place;
   }
+  //Returns the destination
   public function getDestination(){
     return $this->destination;
   }
+  //Saves the destination
   public function setDestination($destination){
     $this->destination=$destination;
   }
+  //Saves the number of place
   public function setPlace($place){
     $this->place=$place;
   }
+  //Add an element to the array of name and age
   public function addArray($element){
     array_push($this->array,$element);
   }
-  //If the number of place is less than 10 then this function returns True
+  //If the number of place is less than or equal to 10 then this function returns True
   public function analysePlace($place){
-    if((int)$place<10 && is_numeric($place)){
+    if((int)$place<=10 && is_numeric($place)){
       return True;
     }
     return False;
   }
-  //Cette fonction va vérifier si les données entrées dans la liste sont bien une suite de string suivit d'un int. Retourne true si un élément n'est pas bon.
-  //Cette fonction calcul aussi le prix du voyage en fonction de l'âge des différentes personnes et de l'assurance annulation.
+  //This function returns True if one of the elements in the array is not a string.
+  //This function also computes the total price of the journey depending of the age and if the assurance has been added
   public function analyseArray($array){
     for($i=0;$i<count($array);$i++){
-      // if(gettype($array[$i])!='string' || !is_numeric($array[$i+1]) || $array[$i]=="" || $array[$i+1]=="" || $array[$i+1]=='0')
       if(is_numeric($array[$i]) || $array[$i]=="" || (int)($array[$i+1])<=0 || (int)($array[$i+1])>=100){
-      //if(!is_numeric($array[$i]) && $array[$i]!="" && (int)($array[$i+1])>0 && (int)($array[$i+1])<100)
         $this->price=0;
         return True;
       }
@@ -67,7 +69,7 @@ class Model{
       else{
         $this->price=$this->price+15;
       }
-      //On analyse à chaque fois une 'paire' d'élément dans la liste, ce qui fait qu'il faut incrémenter de 2 à chaque itération
+      //For one loop the function analyses 2 elements
       $i=$i+1;
     }
     if($this->box){
@@ -79,7 +81,7 @@ class Model{
     if($this->state_place==0){
       return $this->array;
     }
-    //Rajoute des entrées vide si le nouveau nombre est plus grand que l'ancien nombre.
+    //The function adds new empty entries if needed
     else{
       for($i=0;$i<$this->state_place*2;$i++){
         array_push($this->array,'');
@@ -88,23 +90,27 @@ class Model{
       return $this->array;
     }
   }
+  //Saves the array containing name and age of the different customers
   public function setArray($array){
     $this->array=$array;
   }
-  //Permet de mémoriser à quel page on est
+  //Sets the current page
   public function setPage($page){
     $this->page=$page;
   }
-  //Permet de récuper la page enregistrée
+  //Retrieve the current page
   public function currentPage(){
     return $this->page;
   }
+  //State related to the button "annuler".
   public function setState($state){
     $this->state=$state;
   }
+  //Returns True if the button 'annuler' has been pressed
   public function state(){
     return $this->state;
   }
+  //Compares a number of place and the saved number of place, sets a the difference between the two numbers.
   public function comparePlace($place){
     if($place==$this->place){
       $this->state_place=0;
@@ -116,9 +122,11 @@ class Model{
       $this->state_place=$place-$this->place;
     }
   }
+  //Error related with the input text
   public function setErrorText($error){
     $this->error=$error;
   }
+  //Returns True if the user types something wrong
   public function getErrorText(){
     return $this->error;
   }
@@ -126,32 +134,33 @@ class Model{
   public function setBox($box){
     $this->box=$box;
   }
+  //Returns True if the checkbox has been marked
   public function getBox(){
     return $this->box;
   }
+  //Retrieves the total price
   public function getPrice(){
     return $this->price;
   }
+  //Set the price
   public function setPrice($price){
     $this->price=$price;
   }
+  //Returns True if the 'Editer' button has been pressed in 'Fifth_page.php'
   public function stateUpdate(){
     return $this->update;
   }
+  //Set the button 'Editer'
   public function setStateUpdate($update){
     $this->update=$update;
   }
+  //Returns the wanted id to be suppressed or edited
   public function idUpdate(){
     return $this->idUpdate;
   }
+  //Sets the current id to be suppressed or edited
   public function setIdUpdate($idUpdate){
     $this->idUpdate=$idUpdate;
-  }
-  public function displayArray(){
-    foreach($this->array as $value){
-      echo '<br>';
-      echo $value;
-    }
   }
 }
 ?>

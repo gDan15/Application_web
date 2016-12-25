@@ -5,7 +5,7 @@ include_once 'Model.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-//If there is
+//If $control is not empty, we retrieve the data
 if (isset($_SESSION['Variable']) && !empty($_SESSION['Variable']))
 {
   $control = unserialize($_SESSION['Variable']);
@@ -39,7 +39,7 @@ if(empty($control->getDestination()) && empty($control->getPlace()) && empty($_P
   $control->setErrorText(False);
   include("First_page.php");
 }
-//If these condition are valid, the Second_page is displayed
+//If these conditions are valid, the Second_page is displayed
 elseif(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && $control->analysePlace($_POST['place']) && !is_numeric($_POST['destination'])){
   if(!empty($_POST['case'])){
     $control->setBox(True);
@@ -51,7 +51,7 @@ elseif(!empty($_POST["continuer"]) && empty($_POST["annuler"]) && $control->anal
   $control->comparePlace($_POST['place']);
   $control->setPlace($_POST['place']);
   $control->setPage('Second_page.php');
-  //Lorsqu'on passe à la 2 ème on aimerait bien qu'il n'y ait pas de message d'erreur.
+  //
   $control->setErrorText(False);
   include 'Second_page.php';
 }
@@ -76,6 +76,7 @@ elseif(!empty($_POST['confirmer']) && !$control->analyseArray($_POST['Info'])){
   $control->setPage('Third_page.php');
   include 'Third_page.php';
 }
+//If the button "suivant" is pressed, the Fourth_page is displayed
 elseif(!empty($_POST['suivant'])){
   $control->currentPage('Fourth_page.php');
   $dest=$control->getDestination();
@@ -90,6 +91,7 @@ elseif(!empty($_POST['suivant'])){
   }
   //To add the names and ages, we will first transform the array into a single string with implode ( ":",$nom) where : is the caracter between all the elements.
   //After extracting the string, we can turn it back into an array using explode(":",$nom)
+  //After this condition, an element is added or updated into the database
   $str=implode(":",$array);
   if($control->stateUpdate()==False){
     $sql="INSERT INTO Reservation (Destination, Assurance, Total, NomAge) VALUES ('$dest','$assurance','$total','$str')";
