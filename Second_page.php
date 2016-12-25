@@ -1,14 +1,14 @@
 <html>
   <head>
     <title> Reservation -- Détails </title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Style.css"> -->
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
   </head>
   <body>
   <form method="POST" action="Controller.php">
+    <div id="wrapper">
     <h1 align="center">Détails des réservations</h1>
-    <table class="table" align="center">
+    <table class="table" align="center" bgcolor=#008CBA>
         <?php
         $nombre=intval($control->getPlace('place'));
         for($i=0;$i<$nombre;$i++)
@@ -57,6 +57,7 @@
         }
       ?>
     </table>
+    <br>
     <table align="center">
       <tr>
         <td> <input type='submit' name='page_precedente' class="button" value='page precedente'/> </td>
@@ -64,7 +65,7 @@
         <td> <input type='submit' name='annuler' class="button" value='annuler'/> </td>
       </tr>
     </table>
-      <!-- </div> -->
+    </div>
     </form>
   </body>
 </html>

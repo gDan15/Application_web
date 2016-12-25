@@ -119,7 +119,7 @@ else
   $control->setErrorText(True);
   if($control->currentPage()=='First_page.php')
   {
-    echo "Erreur 1ere page -> Page courante : ".$control->currentPage();
+    // echo "Erreur 1ere page -> Page courante : ".$control->currentPage();
     $control->setDestination($_POST['destination']);
     $control->setPlace($_POST['place']);
     if(!empty($_POST['case'])){
@@ -130,7 +130,7 @@ else
     }
   }
   elseif($control->currentPage()=='Second_page.php'){
-    echo "Erreur 2eme page -> Page courante : ".$control->currentPage();
+    // echo "Erreur 2eme page -> Page courante : ".$control->currentPage();
     $control->setArray($_POST['Info']);
   }
   include $control->currentPage();

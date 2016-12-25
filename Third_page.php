@@ -1,15 +1,15 @@
 <html>
   <head>
     <title> Reservation -- Validation </title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Style.css"> -->
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
   </head>
   <body>
     <form method="POST" action="Controller.php">
-      <div class="w3-container w3-teal" align='left'>
+      <div id="wrapper">
         <h1 align="center">Validation des réservations</h1>
-        <table style="width:75%" align="center">
+
+        <table class='table' style="width:60%" align="center" bgcolor=#008CBA>
         <?php
           // $control->displayArray();
           $liste=$control->getArray();
@@ -50,7 +50,7 @@
             echo '</td>';
           echo '</tr>';
         ?>
-        </table>
+      </table>
       <br>
         <table align="center">
           <tr>
@@ -59,7 +59,7 @@
             <td><input type='submit' name='suivant' class="button" value='suivant'/></td>
           </tr>
         </table>
-      </div>
+    </div>
     </form>
   </body>
 </html>
